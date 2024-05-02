@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FitosanidadAgroberries.Views.DescargaIndividualDeCatalogos"
+             Title="{Binding Title}"
+             IconImageSource="lista_de_verificacion_logo.png">
+
+    <AbsoluteLayout Padding="0"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+
+        <Grid  BackgroundColor="White"
+               AbsoluteLayout.LayoutBounds="0,0,1,1"
+               AbsoluteLayout.LayoutFlags="All"
+               HorizontalOptions="Center"
+               VerticalOptions="CenterAndExpand">
+            <StackLayout Orientation="Vertical"
+                     HorizontalOptions="Center">
+                <Grid ColumnDefinitions="*,*,*">
+                    <Frame Grid.Column="0"
+                           Padding="0"
+                           CornerRadius="10"
+                           Margin="5,0,5,0"
+                           VerticalOptions="CenterAndExpand"
+                           HeightRequest="150"
+                           WidthRequest="150">
+                        <Grid RowDefinitions="*,*" BackgroundColor="{StaticResource Primary}">
+                            <Image Grid.Row="0"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="CenterAndExpand"
+                                   BackgroundColor="{StaticResource Primary}"
+                                   Source="usuarios_sincronizacion_logo.png"/>
+                            <Button Grid.Row="1"
+                                    Text="Usuarios Logins"
+                                    TextColor="Black"
+                                    FontSize="Medium"
+                                    FontAttributes="Bold"
+                                    TextTransform="None"
+                                    BackgroundColor="{StaticResource Primary}"
+                                    Padding="0"
+                                    IsEnabled="{Binding DescargaDatosButtonEnabled}"
+                                    Command="{Binding SincronizaDatosLoginAsyncommand}"
+                            />
+                        </Grid>
+                    </Frame>
+
+                    <Frame Grid.Column="1"
+                           Padding="0"
+                           CornerRadius="10"
+                           Margin="5,0,5,0"
+                           VerticalOptions="CenterAndExpand"
+                           HeightRequest="150"
+                           WidthRequest="150">
+                        <Grid RowDefinitions="*,*" BackgroundColor="{StaticResource Primary}">
+                            <Image Grid.Row="0"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="CenterAndExpand"
+                                   BackgroundColor="{StaticResource Primary}"
+                                   Source="campos_sincronizacion_logo.png"/>
+                            <Button Grid.Row="1"
+                                    Text="Campos"
+                                    TextColor="Black"
+                                    FontSize="Medium"
+                                    FontAttributes="Bold"
+                                    TextTransform="None"
+                                    BackgroundColor="{StaticResource Primary}"
+                                    IsEnabled="{Binding DescargaDatosButtonEnabled}"
+                                    Command="{Binding SincronizaCamposAsyncommand}" />
+                        </Grid>
+                    </Frame>
+
+                    <Frame Grid.Column="2"
+                           Padding="0"
+                           CornerRadius="10"
+                           Margin="5,0,5,0"
+                           VerticalOptions="CenterAndExpand"
+                           HeightRequest="150"
+                           WidthRequest="150">
+                        <Grid RowDefinitions="*,*" BackgroundColor="{StaticResource Primary}">
+                            <Image Grid.Row="0"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="CenterAndExpand"
+                                   BackgroundColor="{StaticResource Primary}"
+                                   Source="sector_sincronizacion_logo.png"/>
+                            <Button Grid.Row="1"
+                                    Text="Sectores"
+                                    TextColor="Black"
+                                    FontSize="Medium"
+                                    FontAttributes="Bold"
+                                    TextTransform="None"
+                                    BackgroundColor="{StaticResource Primary}"
+                                    IsEnabled="{Binding DescargaDatosButtonEnabled}"
+                                    Command="{Binding SincronizaSectoresAsyncommand}" />
+                        </Grid>
+                        
+                    </Frame>
+                </Grid>
+
+                <Grid ColumnDefinitions="*,*,*">
+                    <Frame Grid.Column="0"
+                           Padding="0"
+                           CornerRadius="10"
+                           Margin="5,0,5,0"
+                           VerticalOptions="CenterAndExpand"
+                           HeightRequest="150"
+                           WidthRequest="150">
+                        <Grid RowDefinitions="*,*" BackgroundColor="{StaticResource Primary}">
+                            <Image Grid.Row="0"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="CenterAndExpand"
+                                   BackgroundColor="{StaticResource Primary}"
+                                   Source="semana_sincronizacion_logo.png"/>
+                            <Button Grid.Row="1"
+                                    Text="Semanas"
+                                    TextColor="Black"
+                                    FontSize="Medium"
+                                    FontAttributes="Bold"
+                                    TextTransform="None"
+                                    BackgroundColor="{StaticResource Primary}"
+                                    Padding="0"
+                                    IsEnabled="{Binding DescargaDatosButtonEnabled}"
+                                    Command="{Binding SincronizaSemanasAsyncommand}" />
+                        </Grid>
+                        
+                    </Frame>
+
+                    <Frame Grid.Column="1"
+                           Padding="0"
+                           CornerRadius="10"
+                           Margin="5,0,5,0"
+                           VerticalOptions="CenterAndExpand"
+                           HeightRequest="150"
+                           WidthRequest="150">
+                        <Grid RowDefinitions="*,*" BackgroundColor="{StaticResource Primary}">
+                            <Image Grid.Row="0"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="CenterAndExpand"
+                                   BackgroundColor="{StaticResource Primary}"
+                                   Source="tablas_sincronizacion_logo.png"/>
+                            <Button Grid.Row="1"
+                                    Text="Tablas"
+                                    TextColor="Black"
+                                    FontSize="Medium"
+                                    FontAttributes="Bold"
+                                    TextTransform="None"
+                                    BackgroundColor="{StaticResource Primary}"
+                                    IsEnabled="{Binding DescargaDatosButtonEnabled}"
+                                    Command="{Binding SincronizaTablasAsyncommand}" />
+                        </Grid>
+                    </Frame>
+
+                    <Frame Grid.Column="2"
+                           Padding="0"
+                           CornerRadius="10"
+                           Margin="5,0,5,0"
+                           VerticalOptions="CenterAndExpand"
+                           HeightRequest="150"
+                           WidthRequest="150">
+                        <Grid RowDefinitions="*,*" BackgroundColor="{StaticResource Primary}">
+                            <Image Grid.Row="0"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="CenterAndExpand"
+                                   BackgroundColor="{StaticResource Primary}"
+                                   Source="tuneles_sincronizacion_logo.png"/>
+                            <Button Grid.Row="1"
+                                    Text="Tuneles"
+                                    TextColor="Black"
+                                    FontSize="Medium"
+                                    FontAttributes="Bold"
+                                    TextTransform="None"
+                                    BackgroundColor="{StaticResource Primary}"
+                                    IsEnabled="{Binding DescargaDatosButtonEnabled}"
+                                    Command="{Binding SincronizaTunelesAsyncommand}" />
+                        </Grid>
+                        
+                    </Frame>
+                </Grid>
+
+                <Grid ColumnDefinitions="*,*,*">
+                    <Frame Grid.Column="0"
+                           Padding="0"
+                           CornerRadius="10"
+                           Margin="5,0,5,0"
+                           VerticalOptions="CenterAndExpand"
+                           HeightRequest="150"
+                           WidthRequest="150">
+                        <Grid RowDefinitions="*,*" BackgroundColor="{StaticResource Primary}">
+                            <Image Grid.Row="0"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="CenterAndExpand"
+                                   BackgroundColor="{StaticResource Primary}"
+                                   Source="tuneles_sincronizacion_logo.png"/>
+                            <Button Grid.Row="1"
+                                    Text="Tabla Tunel"
+                                    TextColor="Black"
+                                    FontSize="Medium"
+                                    FontAttributes="Bold"
+                                    TextTransform="None"
+                                    BackgroundColor="{StaticResource Primary}"
+                                    Padding="0"
+                                    IsEnabled="{Binding DescargaDatosButtonEnabled}"
+                                    Command="{Binding SincronizaTablaTunelAsyncommand}"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame Grid.Column="1"
+                           Padding="0"
+                           CornerRadius="10"
+                           Margin="5,0,5,0"
+                           VerticalOptions="CenterAndExpand"
+                           HeightRequest="150"
+                           WidthRequest="150">
+                        <Grid RowDefinitions="*,*" BackgroundColor="{StaticResource Primary}">
+                            <Image Grid.Row="0"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="CenterAndExpand"
+                                   BackgroundColor="{StaticResource Primary}"
+                                   Source="plagas_sincronizacion_logo.png"/>
+                            <Button Grid.Row="1"
+                                    Text="Plagas"
+                                    TextColor="Black"
+                                    FontSize="Medium"
+                                    FontAttributes="Bold"
+                                    TextTransform="None"
+                                    BackgroundColor="{StaticResource Primary}"
+                                    IsEnabled="{Binding DescargaDatosButtonEnabled}"
+                                    Command="{Binding SincronizaPlagasAsyncommand}" />
+                        </Grid>
+                        
+                    </Frame>
+
+                    <Frame Grid.Column="2"
+                           Padding="0"
+                           CornerRadius="10"
+                           Margin="5,0,5,0"
+                           VerticalOptions="CenterAndExpand"
+                           HeightRequest="150"
+                           WidthRequest="150">
+                        <Grid RowDefinitions="*,*" BackgroundColor="Gray">
+                            <Button Grid.Row="1"
+                                    Text="Datos De Registro"
+                                    TextColor="Black"
+                                    FontSize="Medium"
+                                    FontAttributes="Bold"
+                                    TextTransform="None"
+                                    BackgroundColor="Gray"/>
+                        </Grid>
+                    </Frame>
+                </Grid>
+
+                <Grid ColumnDefinitions="*,*,*">
+                    <Frame Grid.Column="0"
+                           Padding="0"
+                           CornerRadius="10"
+                           Margin="5,0,5,0"
+                           VerticalOptions="CenterAndExpand"
+                           HeightRequest="150"
+                           WidthRequest="150">
+                        <Grid RowDefinitions="*,*" BackgroundColor="{StaticResource Primary}">
+                            <Image Grid.Row="0"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="CenterAndExpand"
+                                   BackgroundColor="{StaticResource Primary}"
+                                   Source="umbral_sincronizacion_logo.png"/>
+                            <Button Grid.Row="1"
+                                    Text="Umbrales"
+                                    TextColor="Black"
+                                    FontSize="Medium"
+                                    FontAttributes="Bold"
+                                    TextTransform="None"
+                                    BackgroundColor="{StaticResource Primary}"
+                                    Padding="0"
+                                    IsEnabled="{Binding DescargaDatosButtonEnabled}"
+                                    Command="{Binding SincronizaUmbralesAsyncommand}"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame Grid.Column="1"
+                           Padding="0"
+                           CornerRadius="10"
+                           Margin="5,0,5,0"
+                           VerticalOptions="CenterAndExpand"
+                           HeightRequest="150"
+                           WidthRequest="150">
+                        <Grid RowDefinitions="*,*" BackgroundColor="{StaticResource Primary}">
+                            <Image Grid.Row="0"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="CenterAndExpand"
+                                   BackgroundColor="{StaticResource Primary}"
+                                   Source="pin_sincronizacion_logo.png"/>
+                            <Button Grid.Row="1"
+                                    Text="Datos Para Pins"
+                                    TextColor="Black"
+                                    FontSize="Medium"
+                                    FontAttributes="Bold"
+                                    TextTransform="None"
+                                    BackgroundColor="{StaticResource Primary}"
+                                    IsEnabled="{Binding DescargaDatosButtonEnabled}"
+                                    Command="{Binding SincronizaPinsAsyncommand}" />
+                        </Grid>
+                    </Frame>
+
+                    <Frame Grid.Column="2"
+                           Padding="0"
+                           CornerRadius="10"
+                           Margin="5,0,5,0"
+                           VerticalOptions="CenterAndExpand"
+                           HeightRequest="150"
+                           WidthRequest="150">
+                        <Grid RowDefinitions="*,*" BackgroundColor="{StaticResource Primary}">
+                            <Image Grid.Row="0"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="CenterAndExpand"
+                                   BackgroundColor="{StaticResource Primary}"
+                                   Source="mapa_sincronizacion_logo.png"/>
+                            <Button Grid.Row="1"
+                                    Text="Figuras de Mapas"
+                                    TextColor="Black"
+                                    FontSize="Medium"
+                                    FontAttributes="Bold"
+                                    TextTransform="None"
+                                    BackgroundColor="{StaticResource Primary}"
+                                    IsEnabled="{Binding DescargaDatosButtonEnabled}"
+                                    Command="{Binding SincronizaPoligonosAsyncommand}"/>
+                        </Grid>
+                    </Frame>
+                </Grid>
+
+            </StackLayout>
+        </Grid>
+
+        <ContentView Padding="10,0"
+                     AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     AbsoluteLayout.LayoutFlags="All"
+                     BackgroundColor="#C0808080"
+                     IsVisible="{Binding IndicatorVisibility}"
+                     Opacity="70">
+            <StackLayout BackgroundColor="Transparent"
+                         HeightRequest="150"
+                         Orientation="Vertical"
+                         VerticalOptions="Center"
+                         WidthRequest="100">
+                <StackLayout HorizontalOptions="Center"
+                             VerticalOptions="Center">
+                    <Frame Padding="10"
+                           CornerRadius="10">
+                        <StackLayout>
+                            <ActivityIndicator Margin="0,20,0,0"
+                                               HeightRequest="50"
+                                               HorizontalOptions="Center"
+                                               IsRunning="True"
+                                               VerticalOptions="Center"
+                                               WidthRequest="50"/>
+                            <Label Text="Descargando informacion..."
+                                   TextColor="Black"
+                                   FontAttributes="Bold"
+                                   FontSize="Small"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+        </ContentView>
+    </AbsoluteLayout>
+</ContentPage>

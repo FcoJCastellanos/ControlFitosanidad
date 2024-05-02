@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             x:Class="FitosanidadAgroberries.Views.MapaFitosanidadUbicacionExacta"
+             xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
+             xmlns:local="clr-namespace:FitosanidadAgroberries.Interface"
+             Title="{Binding Title}"
+             IconImageSource="mapa_fitosanidad_logo.png">
+
+    <StackLayout>
+        <Frame Grid.Row="0" x:Name="frame1" HasShadow="True" CornerRadius="20" Padding="0" Margin="10,10,10,10">
+            <Grid HorizontalOptions="FillAndExpand" Background="White" VerticalOptions="FillAndExpand" ColumnDefinitions="10,*">
+                <StackLayout Grid.Column="0" Spacing="0" WidthRequest="100" BackgroundColor="Brown" Padding="10">
+
+                </StackLayout>
+
+                <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand" Padding="10" VerticalOptions="FillAndExpand">
+                    <Grid ColumnDefinitions="*, 80">
+                        <Label Grid.Column="0"
+                               Text="Mapa de plagas"
+                               TextColor="Black"
+                               VerticalOptions="Center"
+                               HorizontalOptions="CenterAndExpand"
+                               Margin="0,0,0,0"
+                               FontAttributes="Bold"
+                               FontSize="Large"/>
+
+                        <ImageButton Grid.Column="1"
+                                     Source="cambio_logo.png"
+                                     WidthRequest="40"
+                                     HeightRequest="40"
+                                     CornerRadius="20"
+                                     BackgroundColor="Transparent"
+                                     Margin="10"
+                                     VerticalOptions="Center"
+                                     HorizontalOptions="CenterAndExpand"
+                                     Clicked="ImageButton_Clicked"/>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="60,*">
+                        <Label Grid.Column="0"
+                               Text="Rancho:"
+                               Margin="0,0,0,0"
+                               TextColor="Black"
+                               VerticalOptions="Center"/>
+
+                        <Frame Grid.Column="1"
+                               BorderColor="Black"
+                               CornerRadius="10"
+                               Margin="0,0,20,0"
+                               Padding="0">
+                            <Picker x:Name="CamposPckr"
+                                    Title="Selecciona tu campo"
+                                    FontSize="Micro"
+                                    TextColor="Black"
+                                    TitleColor="Gray"
+                                    SelectedIndex="{Binding CampoSeleccionado}"
+                                    ItemsSource="{Binding ListaCampos}"
+                                    ItemDisplayBinding="{Binding nombreCampo}">
+                                <Picker.Behaviors>
+                                    <behaviors:EventHandlerBehavior EventName="SelectedIndexChanged">
+                                        <behaviors:InvokeCommandAction Command="{Binding MuestraSemanascommand}"/>
+                                    </behaviors:EventHandlerBehavior>
+                                </Picker.Behaviors>
+                            </Picker>
+                        </Frame>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*">
+                        <Grid Grid.Column="0" ColumnDefinitions="60,*">
+                            <Label Grid.Column="0"
+                                   Text="Semana:"
+                                   Margin="0,0,0,0"
+                                   TextColor="Black"
+                                   VerticalOptions="Center"/>
+
+                            <Frame Grid.Column="1"
+                                   BorderColor="Black"
+                                   CornerRadius="10"
+                                   Margin="0,0,0,0"
+                                   Padding="0">
+                                <Picker x:Name="SemanasPckr"
+                                        Title="Selecciona tu semana"
+                                        FontSize="Micro"
+                                        TextColor="Black"
+                                        TitleColor="Gray"
+                                        SelectedIndex="{Binding SemanaSeleccionado}"
+                                        ItemsSource="{Binding ListaSemanas}"
+                                        ItemDisplayBinding="{Binding c_codigo_sem}">
+                                    <Picker.Behaviors>
+                                        <behaviors:EventHandlerBehavior EventName="SelectedIndexChanged">
+                                            <behaviors:InvokeCommandAction Command="{Binding MuestraPlagascommand}"/>
+                                        </behaviors:EventHandlerBehavior>
+                                    </Picker.Behaviors>
+                                </Picker>
+                            </Frame>
+                        </Grid>
+
+                        <Grid Grid.Column="1" ColumnDefinitions="40,*">
+                            <Label Grid.Column="0"
+                                   Text="Plaga:"
+                                   Margin="0,0,0,0"
+                                   TextColor="Black"
+                                   VerticalOptions="Center"/>
+
+                            <Frame Grid.Column="1"
+                                   BorderColor="Black"
+                                   CornerRadius="10"
+                                   Margin="0,0,20,0"
+                                   Padding="0">
+                                <Picker x:Name="PlagasPckr"
+                                        Title="Selecciona tu plaga"
+                                        FontSize="Micro"
+                                        TextColor="Black"
+                                        TitleColor="Gray"
+                                        SelectedIndex="{Binding PlagaSeleccionado}"
+                                        ItemsSource="{Binding ListaPlagas}"
+                                        ItemDisplayBinding="{Binding v_nombre_pla}"
+                                        SelectedIndexChanged="PlagasPckr_SelectedIndexChanged">
+                                </Picker>
+                            </Frame>
+                        </Grid>
+                    </Grid>
+                </StackLayout>
+            </Grid>
+        </Frame>
+
+        <local:CustomMap x:Name="MiMapa" IsShowingUser="True" MapType="Satellite"  HasScrollEnabled="True" HasZoomEnabled="True"/>
+        <!--<maps:Map x:Name="MiMapa" IsShowingUser="True" MapType="Satellite"  HasScrollEnabled="True" HasZoomEnabled="True"/>-->
+    </StackLayout>
+</ContentPage>

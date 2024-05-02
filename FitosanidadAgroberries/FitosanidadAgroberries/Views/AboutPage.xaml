@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FitosanidadAgroberries.Views.AboutPage"
+             xmlns:vm="clr-namespace:FitosanidadAgroberries.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout BackgroundColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView Padding="0,-25,0,-25" VerticalOptions="FillAndExpand">
+                    <Image Source="agroberries_logo.png" VerticalOptions="Center" HeightRequest="150" />
+                </ContentView>
+            </StackLayout>
+        </StackLayout>
+        <ScrollView Grid.Row="1">
+            <StackLayout Orientation="Vertical" Padding="30,0,30,24" Spacing="10">
+                <Label FontAttributes="Italic"
+                   FontSize="Large" 
+                   Margin="30"
+                   Text="Desarrollado por el equipo de T.I. Agroberries México"
+                   TextColor="Black" />
+                <Label FontAttributes="Italic" 
+                   FontSize="Small"
+                   HorizontalOptions="Center"
+                   Margin="0,50,0,0"
+                   Text="Tienes dudas?..."
+                   TextColor="Black" />
+                <Frame CornerRadius="20"
+                   HasShadow="False"
+                   Margin="10"
+                   Padding="0">
+                    <Image WidthRequest="100" Source="contacto.png" />
+                </Frame>
+                <Label Text="Contactanos"
+                    HorizontalOptions="Center"
+                    FontSize="Small"
+                    FontAttributes="Italic"
+                    TextColor="Black" />
+                <Label Text="aorozco@agroberries.mx"
+                    HorizontalOptions="Center"
+                    FontSize="Small"
+                    FontAttributes="Italic"
+                    TextColor="Black" />
+                <Label Text="fcastellanos@agroberries.mx"
+                    HorizontalOptions="Center"
+                    FontSize="Small"
+                    FontAttributes="Italic"
+                    TextColor="Black" />
+                <Label Margin="0,100,0,0"
+                    HorizontalOptions="Center"
+                    Text="Version: 2.2.15.02.2024.17.15"
+                    FontSize="Small"
+                    FontAttributes="Italic"
+                    TextColor="Black" />
+                <Button Margin="0,100,0,0" Text="Politicas de privacidad"
+                    Command="{Binding OpenWebCommand}"
+                    BackgroundColor="{StaticResource Primary}"
+                    TextColor="White"
+                    CornerRadius="10"/>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>

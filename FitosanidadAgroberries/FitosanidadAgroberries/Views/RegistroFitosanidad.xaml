@@ -1,0 +1,441 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
+             x:Class="FitosanidadAgroberries.Views.RegistroFitosanidad"
+             Title="{Binding Title}"
+             IconImageSource="fitosanidad_registro_logo.png">
+
+    <AbsoluteLayout>
+        <Grid>
+            <ScrollView Background="White">
+                <Frame x:Name="frame1" HasShadow="True" CornerRadius="20" Padding="0" Margin="10,20,10,10">
+                    <Grid HorizontalOptions="FillAndExpand" Background="White" VerticalOptions="FillAndExpand" ColumnDefinitions="10,*">
+                        <StackLayout Grid.Column="0" Spacing="0" WidthRequest="100" BackgroundColor="Green" Padding="10">
+
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand" Padding="10" VerticalOptions="FillAndExpand">
+                            <Grid ColumnDefinitions="60,*">
+                                <Label Grid.Column="0"
+                                       Text="Fecha:"
+                                       Margin="0,0,0,0"
+                                       TextColor="Black"
+                                       VerticalOptions="Center"/>
+
+                                <Frame Grid.Column="1"
+                                       Margin="0,20,20,20"
+                                       BorderColor="LightGray"
+                                       CornerRadius="10"
+                                       Padding="0">
+                                    <DatePicker x:Name="datePicker"
+                                                Format="dd/MM/yyyy"
+                                                MinimumDate="01/01/2023"
+                                                MaximumDate="12/31/2026"
+                                                Date="{Binding FechaSeleccionada}"
+                                                TextColor="Black"
+                                                FontSize="Micro">
+                                    </DatePicker>
+                                </Frame>
+                            </Grid>
+
+                            <Grid ColumnDefinitions="60,*">
+                                <Label Grid.Column="0"
+                                       Text="Campo:"
+                                       Margin="0,0,5,0"
+                                       TextColor="Black"
+                                       VerticalOptions="Center"/>
+
+                                <Frame Grid.Column="1"
+                                       Margin="5,10,20,10"
+                                       BorderColor="LightGray"
+                                       CornerRadius="10"
+                                       Padding="0">
+                                    <Picker x:Name="Campos"
+                                            Title="Selecciona tu campo"
+                                            FontSize="Micro"
+                                            TextColor="Black"
+                                            TitleColor="Gray"
+                                            SelectedIndex="{Binding CampoSeleccionado}"
+                                            ItemsSource="{Binding ListaCampos}"
+                                            ItemDisplayBinding="{Binding nombreCampo}">
+                                        <Picker.Behaviors>
+                                            <behaviors:EventHandlerBehavior EventName="SelectedIndexChanged">
+                                                <behaviors:InvokeCommandAction Command="{Binding MuestraSectorescommand}"/>
+                                            </behaviors:EventHandlerBehavior>
+                                        </Picker.Behaviors>
+                                    </Picker>
+                                </Frame>
+                            </Grid>
+
+                            <Grid ColumnDefinitions="60,*">
+                                <Label Grid.Column="0"
+                                       Text="Sector:"
+                                        Margin="0,0,5,0"
+                                        TextColor="Black"
+                                        VerticalOptions="Center" />
+
+                                <Frame Grid.Column="1"
+                                        Margin="5,10,20,10"
+                                        BorderColor="LightGray"
+                                        CornerRadius="10"
+                                        Padding="0">
+                                    <Picker x:Name="Sectores"
+                                             Title="Selecciona tu sector"
+                                             FontSize="Micro"
+                                             TextColor="Black"
+                                             TitleColor="Gray"
+                                             SelectedIndex="{Binding SectorSeleccionado}"
+                                             ItemsSource="{Binding ListaSectores}"
+                                             ItemDisplayBinding="{Binding v_nombre_lot}">
+                                        <Picker.Behaviors>
+                                            <behaviors:EventHandlerBehavior EventName="SelectedIndexChanged">
+                                                <behaviors:InvokeCommandAction Command="{Binding MuestraTablascommand}" />
+                                            </behaviors:EventHandlerBehavior>
+                                        </Picker.Behaviors>
+                                    </Picker>
+                                </Frame>
+                            </Grid>
+
+                            <Grid ColumnDefinitions="*,*">
+                                <Grid Grid.Column="0" ColumnDefinitions="60,*">
+                                    <Label Grid.Column="0"
+                                            Text="Tabla:"
+                                            Margin="0,0,0,0"
+                                            TextColor="Black"
+                                            VerticalOptions="Center"/>
+
+                                    <Frame Grid.Column="1"
+                                            Margin="0,10,0,10"
+                                            BorderColor="LightGray"
+                                            CornerRadius="10"
+                                            Padding="0"
+                                            WidthRequest="170">
+                                        <Picker x:Name="Tabla"
+                                                 Title="Selecciona la Tabla"
+                                                 FontSize="Micro"
+                                                 TextColor="Black"
+                                                 TitleColor="Gray"
+                                                 SelectedIndex="{Binding TablaSeleccionada}"
+                                                 ItemsSource="{Binding ListaTablas}"
+                                                 ItemDisplayBinding="{Binding v_nombre_tab}">
+                                            <Picker.Behaviors>
+                                                <behaviors:EventHandlerBehavior EventName="SelectedIndexChanged">
+                                                    <behaviors:InvokeCommandAction Command="{Binding MuestraTunelescommand}" />
+                                                </behaviors:EventHandlerBehavior>
+                                            </Picker.Behaviors>
+                                        </Picker>
+                                    </Frame>
+                                </Grid>
+
+
+                                <Grid Grid.Column="1" ColumnDefinitions="40,*">
+                                    <Label Grid.Column="0"
+                                            Text="Tunel:"
+                                            Margin="0,0,0,0"
+                                            TextColor="Black"
+                                            VerticalOptions="Center"/>
+
+                                    <Frame Grid.Column="1"
+                                            Margin="0,10,20,10"
+                                            BorderColor="LightGray"
+                                            CornerRadius="10"
+                                            Padding="0"
+                                            WidthRequest="170">
+                                        <Picker x:Name="Tunel"
+                                                 Title="Selecciona el tunel"
+                                                 FontSize="Micro"
+                                                 TextColor="Black"
+                                                 TitleColor="Gray"
+                                                 SelectedIndex="{Binding TunelSeleccionado}"
+                                                 ItemsSource="{Binding ListaTuneles}"
+                                                 ItemDisplayBinding="{Binding v_nombre_tun}">
+                                            <Picker.Behaviors>
+                                                <behaviors:EventHandlerBehavior EventName="SelectedIndexChanged">
+                                                    <behaviors:InvokeCommandAction Command="{Binding MuestraPlagascommand}" />
+                                                </behaviors:EventHandlerBehavior>
+                                            </Picker.Behaviors>
+                                        </Picker>
+                                    </Frame>
+                                </Grid>
+                            </Grid>
+
+                            <Grid ColumnDefinitions="*,*">
+                                <Grid Grid.Column="0" ColumnDefinitions="60,*">
+                                    <Label Grid.Column="0"
+                                            Text="Plaga:"
+                                            Margin="0,0,5,0"
+                                            TextColor="Black"
+                                            VerticalOptions="Center"/>
+
+                                    <Frame Grid.Column="1"
+                                            Margin="0,10,0,10"
+                                            BorderColor="LightGray"
+                                            CornerRadius="10"
+                                            Padding="0"
+                                            WidthRequest="170">
+                                        <Picker x:Name="Plaga"
+                                                 Title="Selecciona la plaga"
+                                                 FontSize="Micro"
+                                                 TextColor="Black"
+                                                 TitleColor="Gray"
+                                                 SelectedIndex="{Binding PlagaSeleccionada}"
+                                                 ItemsSource="{Binding ListaPlagas}"
+                                                 ItemDisplayBinding="{Binding v_nombre_pla}">
+                                        </Picker>
+                                    </Frame>
+                                </Grid>
+
+                                <Grid Grid.Column="1" ColumnDefinitions="60,*">
+                                    <Label Grid.Column="0"
+                                           Text="Cantidad:"
+                                           Margin="0,0,0,0"
+                                           TextColor="Black"
+                                           VerticalOptions="Center"/>
+
+                                    <Frame Grid.Column="1"
+                                           Margin="0,10,20,10"
+                                           BorderColor="LightGray"
+                                           CornerRadius="10"
+                                           Padding="0"
+                                           WidthRequest="170">
+                                        <Entry IsReadOnly="False"
+                                               Keyboard="Numeric"
+                                               Placeholder="Cantidad"
+                                               PlaceholderColor="Gray"
+                                               FontSize="Micro"
+                                               TextColor="Black"
+                                               Text="{Binding Cantidad}" />
+                                    </Frame>
+                                </Grid>
+                            </Grid>
+
+                            <Label Text="Temperatura"
+                                   TextColor="Black"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center" />
+
+                            <Grid ColumnDefinitions="*,*,*">
+                                <Frame Grid.Column="0"
+                                       Margin="0,10,1,10"
+                                       BorderColor="LightGray"
+                                       CornerRadius="10"
+                                       Padding="0"
+                                       WidthRequest="170">
+                                    <Entry IsReadOnly="False"
+                                             Keyboard="Numeric"
+                                             Placeholder="Maxima"
+                                             PlaceholderColor="Gray"
+                                             FontSize="Micro"
+                                             TextColor="Black"
+                                             Text="{Binding TemperaturaMaxima}"
+                                             TextChanged="TemperaturaMaxima_TextChanged"/>
+                                </Frame>
+
+                                <Frame Grid.Column="1"
+                                         Margin="0,10,0,10"
+                                         BorderColor="LightGray"
+                                         CornerRadius="10"
+                                         Padding="0"
+                                         WidthRequest="170">
+                                    <Entry IsReadOnly="False"
+                                             Keyboard="Numeric"
+                                             Placeholder="Minima"
+                                             PlaceholderColor="Gray"
+                                             FontSize="Micro"
+                                             TextColor="Black"
+                                             Text="{Binding TemperaturaMinima}"
+                                             TextChanged="TemperaturaMinima_TextChanged"/>
+                                </Frame>
+
+                                <Frame Grid.Column="2"
+                                         Margin="0,10,20,10"
+                                         BorderColor="LightGray"
+                                         CornerRadius="10"
+                                         Padding="0"
+                                         WidthRequest="170">
+                                    <Entry IsReadOnly="True"
+                                             Keyboard="Numeric"
+                                             Placeholder="Promedio"
+                                             PlaceholderColor="Gray"
+                                             FontSize="Micro"
+                                             TextColor="Black"
+                                             BackgroundColor="LightGray"
+                                             Text="{Binding TemperaturaPromedio}" />
+                                </Frame>
+                            </Grid>
+
+                            <Label Text="Humedad"
+                                   TextColor="Black"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center" />
+
+                            <Grid ColumnDefinitions="*,*,*">
+                                <Frame Grid.Column="0"
+                                       Margin="0,10,0,10"
+                                       BorderColor="LightGray"
+                                       CornerRadius="10"
+                                       Padding="0"
+                                       WidthRequest="170">
+                                    <Entry IsReadOnly="False"
+                                             Keyboard="Numeric"
+                                             Placeholder="Maxima"
+                                             PlaceholderColor="Gray"
+                                             FontSize="Micro"
+                                             TextColor="Black"
+                                             Text="{Binding HumedadMaxima}"
+                                             TextChanged="HumedadMaxima_TextChanged"/>
+                                </Frame>
+
+                                <Frame Grid.Column="1"
+                                         Margin="1,10,1,10"
+                                         BorderColor="LightGray"
+                                         CornerRadius="10"
+                                         Padding="0"
+                                         WidthRequest="170">
+                                    <Entry IsReadOnly="False"
+                                             Keyboard="Numeric"
+                                             Placeholder="Minima"
+                                             PlaceholderColor="Gray"
+                                             FontSize="Micro"
+                                             TextColor="Black"
+                                             Text="{Binding HumedadMinima}"
+                                             TextChanged="HumedadMinima_TextChanged"/>
+                                </Frame>
+
+                                <Frame Grid.Column="2"
+                                         Margin="1,10,20,10"
+                                         BorderColor="LightGray"
+                                         CornerRadius="10"
+                                         Padding="0"
+                                         WidthRequest="170">
+                                    <Entry IsReadOnly="True"
+                                             Keyboard="Numeric"
+                                             Placeholder="Promedio"
+                                             PlaceholderColor="Gray"
+                                             FontSize="Micro"
+                                             TextColor="Black"
+                                             BackgroundColor="LightGray"
+                                             Text="{Binding HumedadPromedio}" />
+                                </Frame>
+                            </Grid>
+
+                            <Grid ColumnDefinitions="*,*">
+                                <Label Grid.Column="0"
+                                       Text="Precipitación:"
+                                       Margin="0,0,0,0"
+                                       TextColor="Black"
+                                       VerticalOptions="Center"/>
+
+                                <Label Grid.Column="1"
+                                       Text="Viento:"
+                                       Margin="0,0,0,0"
+                                       TextColor="Black"
+                                       VerticalOptions="Center"/>
+                            </Grid>
+
+                            <Grid ColumnDefinitions="*,*">
+                                <Frame Grid.Column="0"
+                                        Margin="0,10,1,10"
+                                        BorderColor="LightGray"
+                                        CornerRadius="10"
+                                        Padding="0"
+                                        WidthRequest="170">
+                                    <Entry IsReadOnly="False"
+                                              Keyboard="Numeric"
+                                              Placeholder="Precipitación"
+                                              PlaceholderColor="Gray"
+                                              FontSize="Micro"
+                                              TextColor="Black"
+                                              Text="{Binding Precipitacion}" />
+                                </Frame>
+
+                                <Frame Grid.Column="1"
+                                         Margin="0,10,20,10"
+                                         BorderColor="LightGray"
+                                         CornerRadius="10"
+                                         Padding="0"
+                                         WidthRequest="170">
+                                    <Entry IsReadOnly="False"
+                                             Keyboard="Numeric"
+                                             Placeholder="Viento"
+                                             PlaceholderColor="Gray"
+                                             FontSize="Micro"
+                                             TextColor="Black"
+                                             Text="{Binding Viento}" />
+                                </Frame>
+                            </Grid>
+
+                            <Label Text="Comentarios:"
+                                   Margin="0,0,0,0"
+                                   TextColor="Black"
+                                   VerticalOptions="Center"/>
+
+                            <Frame Margin="0,10,20,10"
+                                   BorderColor="LightGray"
+                                   CornerRadius="10"
+                                   Padding="0">
+                                <Entry IsReadOnly="False"
+                                         Keyboard="Text"
+                                         Placeholder="Comentarios"
+                                         PlaceholderColor="Gray"
+                                         FontSize="Micro"
+                                         TextColor="Black"
+                                         Text="{Binding Comentarios}" />
+                            </Frame>
+
+
+                            <Frame Padding="0"
+                                     Margin="10,40,10,10"
+                                     CornerRadius="10"
+                                     BackgroundColor="#7ABA04">
+                                <Button Text="Confirmar"
+                                          TextColor="Black"
+                                          FontSize="Large"
+                                          FontAttributes="Bold"
+                                          TextTransform="None"
+                                          BackgroundColor="#7ABA04"
+                                          IsEnabled="{Binding GuardaDatosButtonEnabled}"
+                                          Command="{Binding GuardaDatoscommand}" />
+                            </Frame>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+            </ScrollView>
+        </Grid>
+
+        <ContentView Padding="10,0"
+                     AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     AbsoluteLayout.LayoutFlags="All"
+                     BackgroundColor="#C0808080"
+                     IsVisible="{Binding IndicatorVisibility}"
+                     Opacity="70">
+            <StackLayout BackgroundColor="Transparent"
+                         HeightRequest="150"
+                         Orientation="Vertical"
+                         VerticalOptions="Center"
+                         WidthRequest="100">
+                <StackLayout HorizontalOptions="Center"
+                             VerticalOptions="Center">
+                    <Frame Padding="10"
+                           CornerRadius="10">
+                        <StackLayout>
+                            <ActivityIndicator Margin="0,20,0,0"
+                                               HeightRequest="50"
+                                               HorizontalOptions="Center"
+                                               IsRunning="True"
+                                               VerticalOptions="Center"
+                                               WidthRequest="50"/>
+                            <Label Text="Guardando datos..."
+                                   TextColor="Black"
+                                   FontAttributes="Bold"
+                                   FontSize="Small"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+        </ContentView>
+    </AbsoluteLayout>
+</ContentPage>

@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FitosanidadAgroberries.Views.LoginPage"
+             Shell.NavBarIsVisible="False">
+
+    <AbsoluteLayout Padding="0"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                BackgroundColor="White">
+
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                HorizontalOptions="Center"
+                VerticalOptions="CenterAndExpand">
+            <Grid RowDefinitions="200,*">
+                <StackLayout Orientation="Vertical"
+                         Margin="120,10">
+                    <Frame CornerRadius="200">
+                        <Image Source="logo.png"
+                           Margin="0" />
+                    </Frame>
+                </StackLayout>
+                <Frame BackgroundColor="Green"
+                   Grid.Row="1"
+                   VerticalOptions="Center"
+                   CornerRadius="20"
+                   Margin="50">
+                    <StackLayout>
+                        <Label Text="Ingresa tus credenciales"
+                           FontAttributes="Bold"
+                           FontSize="Medium"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           Margin="0" />
+                        <Image Source="user_logo.png"
+                           WidthRequest="50"
+                           HeightRequest="50" />
+                        <Frame Margin="40,10,40,10"
+                           CornerRadius="20"
+                           Padding="5"
+                           BorderColor="LightGray">
+                            <Entry Keyboard="Text"
+                               Placeholder="Usuario"
+                               PlaceholderColor="DarkGray"
+                               FontSize="Small"
+                               TextColor="Black"
+                               Text="{Binding V_usuario}" />
+                        </Frame>
+                        <Frame Margin="40,10,40,10"
+                           CornerRadius="20"
+                           Padding="5"
+                           BorderColor="LightGray">
+                            <Entry Keyboard="Text"
+                               IsPassword="True"
+                               ReturnType="Done"
+                               Placeholder="Contraseña"
+                               PlaceholderColor="DarkGray"
+                               FontSize="Small"
+                               TextColor="Black"
+                               Text="{Binding V_contrasenia}" />
+                        </Frame>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                            <CheckBox Color="Black"
+                                      IsChecked="{Binding IsChecked}">
+                            </CheckBox>
+                            <Label Text="Recordar Usuario"
+                                   FontSize="Small"
+                                   FontAttributes="Bold"
+                                   TextColor="White"/>
+                        </StackLayout>
+                        <Frame Padding="0"
+                           Margin="20"
+                           CornerRadius="10"
+                           BackgroundColor="#7ABA04">
+                            <Button TextColor="White"
+                                FontSize="Large"
+                                FontAttributes="Bold"
+                                TextTransform="None"
+                                BackgroundColor="#7ABA04"
+                                VerticalOptions="Center"
+                                IsEnabled="{Binding LoginButtonEnabled}"
+                                Text="Login" Command="{Binding NavegarMainPageAsynccommand}"/>
+                        </Frame>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </ScrollView>
+
+        <ContentView Padding="10,0"
+              AbsoluteLayout.LayoutBounds="0,0,1,1"
+              AbsoluteLayout.LayoutFlags="All"
+              BackgroundColor="#C0808080"
+              IsVisible="{Binding IndicatorVisibility}"
+              Opacity="70">
+            <StackLayout BackgroundColor="Transparent"
+                  HeightRequest="150"
+                  Orientation="Vertical"
+                  VerticalOptions="Center"
+                  WidthRequest="100">
+                <StackLayout HorizontalOptions="Center"
+                      VerticalOptions="Center">
+                    <Frame Padding="10"
+                    CornerRadius="10">
+                        <StackLayout>
+                            <ActivityIndicator Margin="0,20,0,0"
+                                        HeightRequest="50"
+                                        HorizontalOptions="Center"
+                                        IsRunning="True"
+                                        VerticalOptions="Center"
+                                        WidthRequest="50"/>
+                            <Label Text="Iniciando sesion..."
+                            TextColor="Black"
+                            FontAttributes="Bold"
+                            FontSize="Small"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+        </ContentView>
+    </AbsoluteLayout>
+</ContentPage>
